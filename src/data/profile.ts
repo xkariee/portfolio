@@ -1,3 +1,5 @@
+import { asset } from '@/lib/asset'
+
 export type SocialId = 'github' | 'linkedin' | 'instagram' | 'x' | 'dribbble'
 
 export interface SocialLink {
@@ -35,8 +37,8 @@ export const profile: Profile = {
   countryCode: 'PL',
   timeZone: 'Europe/Warsaw',
   email: 'mostowyk26@gmail.com',
-  avatar: '/logos/profile.jpg',
-  avatarHover: '/logos/coolprofile-avatar.jpg',
+  avatar: asset('/logos/profile.jpg'),
+  avatarHover: asset('/logos/coolprofile-avatar.jpg'),
   available: true,
   availability: 'Available for new projects',
   intro:

@@ -1,3 +1,5 @@
+import { asset } from '@/lib/asset'
+
 export type ProjectCategory = 'FiveM' | 'Minecraft' | 'Web App' | 'Automation'
 
 export type CoverVariant = 'dashboard' | 'map' | 'shop' | 'mobile' | 'editor' | 'landing' | 'voxel'
@@ -39,14 +41,14 @@ export const projects: Project[] = [
     client: 'AxieeWorld · team project',
     tags: ['Java', 'Minecraft', 'Plugins'],
     cover: { variant: 'voxel', from: '#08140c', to: '#050a07', accent: '#4ade80' },
-    showcase: ['/projects/axieeworld/3.png', '/projects/axieeworld/5.png', '/projects/axieeworld/6.png'],
+    showcase: [asset('/projects/axieeworld/3.png'), asset('/projects/axieeworld/5.png'), asset('/projects/axieeworld/6.png')],
     gallery: [
-      '/projects/axieeworld/1.png',
-      '/projects/axieeworld/3.png',
-      '/projects/axieeworld/5.png',
-      '/projects/axieeworld/4.png',
-      '/projects/axieeworld/2.png',
-      '/projects/axieeworld/6.png',
+      asset('/projects/axieeworld/1.png'),
+      asset('/projects/axieeworld/3.png'),
+      asset('/projects/axieeworld/5.png'),
+      asset('/projects/axieeworld/4.png'),
+      asset('/projects/axieeworld/2.png'),
+      asset('/projects/axieeworld/6.png'),
     ],
     overview:
       'AxieeWorld is a Minecraft server we are building together as a team. Instead of stacking dozens of ready-made plugins, we write our own: AxiomCorePlugin holds the core features of the server, and AxiomOneblock is a custom OneBlock game mode built on top of it.',
@@ -74,8 +76,8 @@ export const projects: Project[] = [
     client: 'FiveM roleplay servers',
     tags: ['Lua', 'React', 'TypeScript', 'MySQL'],
     cover: { variant: 'map', from: '#0a1428', to: '#050a14', accent: '#3b82f6' },
-    image: '/projects/fivem-police-mdt/1.png',
-    gallery: ['/projects/fivem-police-mdt/1.png', '/projects/fivem-police-mdt/2.png', '/projects/fivem-police-mdt/3.png'],
+    image: asset('/projects/fivem-police-mdt/1.png'),
+    gallery: [asset('/projects/fivem-police-mdt/1.png'), asset('/projects/fivem-police-mdt/2.png'), asset('/projects/fivem-police-mdt/3.png')],
     overview:
       'A complete Mobile Data Terminal for police departments on FiveM roleplay servers. Officers get a dispatch system with a live map of units and calls, bodycam feeds and a speed radar, while command staff manage rosters, ranks and records from the same in-game tablet.',
     challenge:
@@ -102,13 +104,13 @@ export const projects: Project[] = [
     client: 'FiveM roleplay servers',
     tags: ['Lua', 'React', 'TypeScript', 'JavaScript', 'MySQL'],
     cover: { variant: 'mobile', from: '#0d0b24', to: '#070614', accent: '#818cf8' },
-    showcase: ['/projects/fivem-phone-system/2_cutout.png', '/projects/fivem-phone-system/1_cutout.png', '/projects/fivem-phone-system/3_cutout.png'],
+    showcase: [asset('/projects/fivem-phone-system/2_cutout.png'), asset('/projects/fivem-phone-system/1_cutout.png'), asset('/projects/fivem-phone-system/3_cutout.png')],
     gallery: [
-      '/projects/fivem-phone-system/1_cutout.png',
-      '/projects/fivem-phone-system/2_cutout.png',
-      '/projects/fivem-phone-system/3_cutout.png',
-      '/projects/fivem-phone-system/4_cutout.png',
-      '/projects/fivem-phone-system/5_cutout.png',
+      asset('/projects/fivem-phone-system/1_cutout.png'),
+      asset('/projects/fivem-phone-system/2_cutout.png'),
+      asset('/projects/fivem-phone-system/3_cutout.png'),
+      asset('/projects/fivem-phone-system/4_cutout.png'),
+      asset('/projects/fivem-phone-system/5_cutout.png'),
     ],
     overview:
       'The smartphone players use all the time during roleplay: messages, notifications, invites and apps, all inside a React interface. Every app is a separate module, so new features can be added without touching the rest of the phone.',
@@ -136,11 +138,11 @@ export const projects: Project[] = [
     client: 'FiveM roleplay servers',
     tags: ['Lua', 'React', 'TypeScript', 'JavaScript', 'MySQL'],
     cover: { variant: 'editor', from: '#0a1020', to: '#06080f', accent: '#60a5fa' },
-    image: '/projects/fivem-character-creator/1.png',
+    image: asset('/projects/fivem-character-creator/1.png'),
     gallery: [
-      '/projects/fivem-character-creator/1.png',
-      '/projects/fivem-character-creator/2.png',
-      '/projects/fivem-character-creator/3.png',
+      asset('/projects/fivem-character-creator/1.png'),
+      asset('/projects/fivem-character-creator/2.png'),
+      asset('/projects/fivem-character-creator/3.png'),
     ],
     overview:
       'The first thing every player sees on a roleplay server. The creator lets players shape their character, pick skins and clothing and browse texture variants with previews generated directly in the game — then saves everything to the database.',
@@ -166,13 +168,13 @@ export const projects: Project[] = [
     client: 'FiveM roleplay servers',
     tags: ['Lua', 'Vue.js', 'TypeScript', 'MySQL', 'Google API'],
     cover: { variant: 'dashboard', from: '#071716', to: '#050b0b', accent: '#2dd4bf' },
-    image: '/projects/fivem-radio-system/2.png',
+    image: asset('/projects/fivem-radio-system/2.png'),
     gallery: [
-      '/projects/fivem-radio-system/2.png',
-      '/projects/fivem-radio-system/3.png',
-      '/projects/fivem-radio-system/4.png',
-      '/projects/fivem-radio-system/5.png',
-      '/projects/fivem-radio-system/1.png',
+      asset('/projects/fivem-radio-system/2.png'),
+      asset('/projects/fivem-radio-system/3.png'),
+      asset('/projects/fivem-radio-system/4.png'),
+      asset('/projects/fivem-radio-system/5.png'),
+      asset('/projects/fivem-radio-system/1.png'),
     ],
     overview:
       'An in-game radio that lets players search for music, build playlists and come back to recently played tracks. Search results come from the Google API, while playlists and history are stored per player in the database.',
@@ -198,13 +200,13 @@ export const projects: Project[] = [
     client: 'Personal project',
     tags: ['React', 'Node.js', 'SQL', 'Docker'],
     cover: { variant: 'dashboard', from: '#0f1220', to: '#090b14', accent: '#6366f1' },
-    image: '/projects/job-hunter/1_redacted.png',
+    image: asset('/projects/job-hunter/1_redacted.png'),
     imagePosition: 'left center',
     gallery: [
-      '/projects/job-hunter/1_redacted.png',
-      '/projects/job-hunter/2_redacted.png',
-      '/projects/job-hunter/3_redacted.png',
-      '/projects/job-hunter/4_redacted.png',
+      asset('/projects/job-hunter/1_redacted.png'),
+      asset('/projects/job-hunter/2_redacted.png'),
+      asset('/projects/job-hunter/3_redacted.png'),
+      asset('/projects/job-hunter/4_redacted.png'),
     ],
     overview:
       'Job Hunter collects job offers in one place and matches them to your profile. You search by your skills and credentials instead of scrolling through endless job boards, and the auto-apply module can send applications to matching offers for you.',
@@ -230,15 +232,15 @@ export const projects: Project[] = [
     client: 'Discord communities',
     tags: ['Python', 'Discord API'],
     cover: { variant: 'editor', from: '#0d0f24', to: '#07081a', accent: '#5865f2' },
-    showcase: ['/projects/discord-bot/7.png', '/projects/discord-bot/1_redacted.png'],
+    showcase: [asset('/projects/discord-bot/7.png'), asset('/projects/discord-bot/1_redacted.png')],
     gallery: [
-      '/projects/discord-bot/7.png',
-      '/projects/discord-bot/1_redacted.png',
-      '/projects/discord-bot/2_redacted.png',
-      '/projects/discord-bot/6_redacted.png',
-      '/projects/discord-bot/4_redacted.png',
-      '/projects/discord-bot/3_redacted.png',
-      '/projects/discord-bot/5_redacted.png',
+      asset('/projects/discord-bot/7.png'),
+      asset('/projects/discord-bot/1_redacted.png'),
+      asset('/projects/discord-bot/2_redacted.png'),
+      asset('/projects/discord-bot/6_redacted.png'),
+      asset('/projects/discord-bot/4_redacted.png'),
+      asset('/projects/discord-bot/3_redacted.png'),
+      asset('/projects/discord-bot/5_redacted.png'),
     ],
     overview:
       'A Python bot built to run Discord communities. It handles support tickets, tracks invites, sends automated notifications and connects the server with external services through custom integrations.',

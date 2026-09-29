@@ -1,3 +1,5 @@
+import { asset } from '@/lib/asset'
+
 export interface TimelineItem {
   id: string
   period: string
@@ -53,7 +55,7 @@ export const studies: TimelineItem[] = [
     description: 'Computer Science with a specialisation in game development.',
     initials: 'WSB',
     accent: '#4d6bff',
-    logo: '/logos/wsb.png',
+    logo: asset('/logos/wsb.png'),
     current: true,
   },
   {
@@ -65,6 +67,6 @@ export const studies: TimelineItem[] = [
       'Specialisation in web and app development. First websites, first bugs and the beginning of a long love story with software and web development.',
     initials: 'ZSZ',
     accent: '#e0567a',
-    logo: '/logos/zsz.png',
+    logo: asset('/logos/zsz.png'),
   },
 ]
