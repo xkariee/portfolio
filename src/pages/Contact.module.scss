@@ -1,0 +1,153 @@
+@use '@/styles/abstracts' as *;
+
+.section {
+  padding-top: clamp(3rem, 2rem + 3vw, 5rem);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: clamp(2rem, 1rem + 3vw, 3.5rem);
+  align-items: start;
+
+  @include down($bp-lg) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.block {
+  padding-top: 1rem;
+  border-top: 1px solid var(--c-border);
+}
+
+.label {
+  margin-bottom: 0.6rem;
+  @include eyebrow;
+}
+
+.emailRow {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.email {
+  font-size: clamp(1.1rem, 1rem + 0.5vw, 1.35rem);
+  font-weight: 700;
+  overflow-wrap: anywhere;
+  background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat;
+  transition: background-size 0.5s $ease-out;
+  @include focus-ring;
+
+  &:hover {
+    background-size: 100% 1px;
+  }
+}
+
+.copy {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  border: 1px solid var(--c-border);
+  color: var(--c-text-soft);
+  transition:
+    color 0.3s,
+    border-color 0.3s,
+    background-color 0.3s;
+  @include focus-ring;
+
+  &:hover {
+    color: #050507;
+    background: var(--c-mint);
+    border-color: var(--c-mint);
+  }
+}
+
+.value {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.time {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--c-muted);
+}
+
+.pulse {
+  position: relative;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--c-mint);
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    border: 1px solid var(--c-mint);
+    animation: ping 2s $ease-out infinite;
+  }
+}
+
+.socials {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.social {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding-block: 0.3rem;
+  font-size: 1.05rem;
+  color: var(--c-text-soft);
+  transition: color 0.3s;
+  @include focus-ring;
+
+  &:hover {
+    color: #fff;
+  }
+}
+
+.arrow {
+  opacity: 0;
+  transform: translate(-6px, 6px);
+  transition:
+    opacity 0.3s,
+    transform 0.4s $ease-out;
+
+  .social:hover & {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes ping {
+  from {
+    transform: scale(0.6);
+    opacity: 1;
+  }
+  to {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}

@@ -1,0 +1,61 @@
+@use '@/styles/abstracts' as *;
+
+.section {
+  padding-block: clamp(3rem, 2rem + 3vw, 5rem) 0;
+}
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1.6rem;
+}
+
+.filter {
+  position: relative;
+  isolation: isolate;
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 0.2rem;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  border: 1px solid var(--c-border);
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--c-muted);
+  transition:
+    color 0.3s,
+    border-color 0.3s;
+  @include focus-ring(2px);
+
+  @include hover {
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.25);
+  }
+
+  &:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+  }
+}
+
+.active,
+.active:hover {
+  color: #050507;
+  border-color: transparent;
+}
+
+.pill {
+  position: absolute;
+  inset: -1px;
+  z-index: -1;
+  border-radius: inherit;
+  background: #fff;
+}
+
+.count {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  line-height: 1;
+  opacity: 0.6;
+}

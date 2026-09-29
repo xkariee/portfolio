@@ -1,0 +1,113 @@
+@use 'tokens' as *;
+
+@mixin up($bp) {
+  @media (min-width: $bp) {
+    @content;
+  }
+}
+
+@mixin down($bp) {
+  @media (max-width: ($bp - 0.02px)) {
+    @content;
+  }
+}
+
+@mixin hover {
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      @content;
+    }
+  }
+}
+
+@mixin reduced-motion {
+  @if & {
+    :root[data-motion='reduced'] & {
+      @content;
+    }
+  } @else {
+    :root[data-motion='reduced'] {
+      @content;
+    }
+  }
+}
+
+@mixin focus-ring($offset: 3px) {
+  &:focus-visible {
+    outline: 2px solid var(--c-focus);
+    outline-offset: $offset;
+  }
+}
+
+@mixin container($max: var(--container)) {
+  width: min(100% - 2 * var(--gutter), $max);
+  margin-inline: auto;
+}
+
+@mixin sr-only {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@mixin glass($bg: rgba(12, 12, 18, 0.55), $blur: 16px) {
+  background: $bg;
+  -webkit-backdrop-filter: blur($blur) saturate(150%);
+  backdrop-filter: blur($blur) saturate(150%);
+}
+
+@mixin eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--c-muted);
+}
+
+@mixin spotlight($size: 420px, $border: rgba(255, 255, 255, 0.55), $glow: rgba(120, 150, 255, 0.08)) {
+  position: relative;
+  isolation: isolate;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.5s $ease-out;
+  }
+
+  &::before {
+    z-index: 3;
+    padding: 1px;
+    background: radial-gradient($size circle at var(--mx, 50%) var(--my, 50%), $border, transparent 45%);
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask:
+      linear-gradient(#000 0 0) content-box exclude,
+      linear-gradient(#000 0 0);
+  }
+
+  &::after {
+    z-index: -1;
+    background: radial-gradient($size * 1.5 circle at var(--mx, 50%) var(--my, 50%), $glow, transparent 55%);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover::before,
+    &:hover::after {
+      opacity: 1;
+    }
+  }
+}

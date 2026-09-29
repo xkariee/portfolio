@@ -1,0 +1,146 @@
+@use '@/styles/abstracts' as *;
+
+.section {
+  padding-block: calc(var(--section-space) * 0.5);
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-bottom: 1.25rem;
+}
+
+.filter {
+  position: relative;
+  isolation: isolate;
+  padding: 0.4rem 0.85rem;
+  border-radius: 999px;
+  border: 1px solid var(--c-line);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--c-muted);
+  transition:
+    color 0.3s,
+    border-color 0.3s;
+  @include focus-ring(2px);
+
+  @include hover {
+    color: #fff;
+    border-color: var(--c-border);
+  }
+}
+
+.filterActive,
+.filterActive:hover {
+  color: #050507;
+  border-color: transparent;
+}
+
+.filterPill {
+  position: absolute;
+  inset: -1px;
+  z-index: -1;
+  border-radius: inherit;
+  background: #fff;
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.chip {
+  position: relative;
+  isolation: isolate;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.6rem 0.9rem;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--c-text-soft);
+  transition:
+    transform 0.4s $ease-out,
+    opacity 0.45s $ease-out,
+    filter 0.45s $ease-out,
+    color 0.3s,
+    background-color 0.3s,
+    box-shadow 0.4s;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: radial-gradient(160px circle at var(--mx, -100px) var(--my, -100px), rgba(255, 255, 255, 0.55), transparent 70%);
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask:
+      linear-gradient(#000 0 0) content-box exclude,
+      linear-gradient(#000 0 0);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.4s;
+  }
+
+  .grid:hover &::before {
+    opacity: 1;
+  }
+
+  @include hover {
+    color: #fff;
+    transform: translateY(-3px);
+    background: color-mix(in srgb, var(--brand) 10%, rgba(255, 255, 255, 0.03));
+    box-shadow:
+      0 0 0 1px color-mix(in srgb, var(--brand) 55%, transparent),
+      0 14px 36px -14px var(--brand);
+
+    .icon {
+      color: var(--brand);
+      transform: scale(1.12) rotate(-6deg);
+    }
+  }
+}
+
+.icon {
+  font-size: 1.2rem;
+  color: #fff;
+  transition:
+    color 0.3s,
+    transform 0.45s $ease-back;
+}
+
+.learning {
+  padding: 0.12rem 0.4rem;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--brand) 45%, transparent);
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--brand);
+}
+
+.lit {
+  color: #fff;
+  background: color-mix(in srgb, var(--brand) 8%, rgba(255, 255, 255, 0.03));
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--brand) 40%, transparent);
+
+  .icon {
+    color: var(--brand);
+  }
+}
+
+.dimmed {
+  opacity: 0.22;
+  filter: grayscale(1);
+  transform: scale(0.96);
+}

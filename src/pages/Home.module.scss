@@ -1,0 +1,28 @@
+@use '@/styles/abstracts' as *;
+
+.projects {
+  padding-block: calc(var(--section-space) * 0.5);
+}
+
+.more {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 1.05rem;
+  letter-spacing: 0.03em;
+  color: var(--c-muted);
+  transition: color 0.3s;
+  @include focus-ring;
+
+  svg {
+    transition: transform 0.4s $ease-out;
+  }
+
+  &:hover {
+    color: #fff;
+
+    svg {
+      transform: rotate(45deg);
+    }
+  }
+}

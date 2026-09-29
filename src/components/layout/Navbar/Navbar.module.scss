@@ -1,0 +1,129 @@
+@use '@/styles/abstracts' as *;
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 1.25rem var(--gutter) 0;
+  pointer-events: none;
+
+  > * {
+    pointer-events: auto;
+  }
+
+  @include down($bp-md) {
+    display: flex;
+    justify-content: center;
+    padding-top: 0.9rem;
+  }
+}
+
+.nav {
+  grid-column: 2;
+}
+
+.pill {
+  display: flex;
+  align-items: center;
+  gap: 0.1rem;
+  padding: 0.35rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  @include glass(rgba(10, 10, 16, 0.5));
+  box-shadow:
+    0 12px 40px -12px rgba(0, 0, 0, 0.7),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.link {
+  position: relative;
+  isolation: isolate;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.6rem 1.1rem;
+  border-radius: 999px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--c-text-soft);
+  transition: color 0.3s;
+  @include focus-ring(1px);
+
+  &:hover,
+  &.active {
+    color: #fff;
+  }
+
+  @include down($bp-sm) {
+    padding: 0.55rem 0.75rem;
+    font-size: 0.92rem;
+  }
+
+  @include down($bp-xs) {
+    padding-inline: 0.6rem;
+  }
+}
+
+.hoverPill {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.activeDot {
+  position: absolute;
+  left: 50%;
+  bottom: 0.22rem;
+  width: 4px;
+  height: 4px;
+  margin-left: -2px;
+  border-radius: 50%;
+  background: var(--c-mint);
+  box-shadow: 0 0 10px var(--c-mint);
+}
+
+.actions {
+  grid-column: 3;
+  justify-self: end;
+
+  @include down($bp-md) {
+    display: none;
+  }
+}
+
+.cmd {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  height: 46px;
+  padding: 0 0.95rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  @include glass;
+  color: var(--c-text-soft);
+  font-size: 1rem;
+  transition:
+    border-color 0.3s,
+    color 0.3s;
+  @include focus-ring;
+
+  kbd {
+    padding: 0.14rem 0.42rem;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.06);
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+  }
+
+  @include hover {
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.35);
+  }
+}

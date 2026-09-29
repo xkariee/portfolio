@@ -1,0 +1,17 @@
+@use '@/styles/abstracts' as *;
+
+.headerExtra {
+  display: flex;
+  align-items: center;
+  gap: 2.25rem;
+}
+
+.manifesto {
+  padding-block: calc(var(--section-space) * 0.9) calc(var(--section-space) * 0.5);
+}
+
+.kicker {
+  margin-bottom: 1.25rem;
+  @include eyebrow;
+  color: var(--c-mint);
+}

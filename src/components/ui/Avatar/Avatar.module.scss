@@ -1,0 +1,153 @@
+@use '@/styles/abstracts' as *;
+
+.avatar {
+  position: relative;
+  display: inline-grid;
+  width: var(--size);
+  height: var(--size);
+  flex-shrink: 0;
+  perspective: calc(var(--size) * 5);
+}
+
+.flippable {
+  border-radius: 50%;
+  cursor: pointer;
+  @include focus-ring(5px);
+}
+
+.halo,
+.ring,
+.orbit {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.halo {
+  inset: 4%;
+  background: var(--c-mint);
+  filter: blur(calc(var(--size) * 0.18));
+  opacity: 0.28;
+  transition:
+    opacity 0.6s $ease-out,
+    transform 0.6s $ease-out;
+}
+
+.ring {
+  inset: -4px;
+  border: 2px solid var(--c-mint);
+  transition: transform 0.7s $ease-back;
+}
+
+.orbit {
+  inset: calc(var(--size) * -0.14);
+  border: 1px dashed rgba(111, 242, 212, 0.4);
+  animation: orbit 36s linear infinite;
+  transition:
+    inset 0.7s $ease-back,
+    border-color 0.4s;
+}
+
+.card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.9s $ease-back;
+}
+
+.face {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border-radius: 50%;
+  border: 3px solid var(--c-bg);
+  background: #12131d;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.back {
+  transform: rotateY(180deg);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .flippable:hover {
+    .card {
+      transform: rotateY(180deg);
+    }
+
+    .halo {
+      opacity: 0.6;
+      transform: scale(1.12);
+    }
+
+    .ring {
+      transform: scale(1.07);
+    }
+
+    .orbit {
+      inset: calc(var(--size) * -0.2);
+      border-color: rgba(111, 242, 212, 0.75);
+      animation-duration: 8s;
+    }
+  }
+}
+
+.flippable:focus-visible .card,
+.flipped .card {
+  transform: rotateY(180deg);
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.initials {
+  font-size: calc(var(--size) * 0.33);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  color: var(--c-mint);
+}
+
+.status {
+  position: absolute;
+  right: 5%;
+  bottom: 5%;
+  z-index: 1;
+  width: max(12px, calc(var(--size) * 0.16));
+  height: max(12px, calc(var(--size) * 0.16));
+  border-radius: 50%;
+  background: var(--c-mint);
+  border: 3px solid var(--c-bg);
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    border-radius: 50%;
+    border: 2px solid var(--c-mint);
+    animation: pulse 2.2s $ease-out infinite;
+  }
+}
+
+@keyframes orbit {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  from {
+    transform: scale(0.9);
+    opacity: 0.9;
+  }
+  to {
+    transform: scale(2.1);
+    opacity: 0;
+  }
+}

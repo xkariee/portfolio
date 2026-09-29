@@ -1,0 +1,171 @@
+@use '@/styles/abstracts' as *;
+
+.form {
+  @include spotlight(420px, rgba(255, 255, 255, 0.75), rgba(77, 107, 255, 0.06));
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  padding: clamp(1.25rem, 0.9rem + 1.4vw, 2rem);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--c-border);
+  background: rgba(8, 8, 12, 0.7);
+}
+
+.topics {
+  border: 0;
+  padding: 0;
+  min-width: 0;
+}
+
+.legend {
+  margin-bottom: 0.7rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--c-text-soft);
+}
+
+.topicList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.topic {
+  position: relative;
+  isolation: isolate;
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid var(--c-border);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--c-muted);
+  cursor: pointer;
+  transition:
+    color 0.3s,
+    border-color 0.3s;
+
+  &:hover {
+    color: #fff;
+  }
+
+  &:has(:focus-visible) {
+    outline: 2px solid var(--c-focus);
+    outline-offset: 2px;
+  }
+}
+
+.topicActive,
+.topicActive:hover {
+  color: #050507;
+  border-color: transparent;
+}
+
+.topicPill {
+  position: absolute;
+  inset: -1px;
+  z-index: -1;
+  border-radius: inherit;
+  background: #fff;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.1rem;
+
+  @include down($bp-sm) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.field {
+  position: relative;
+}
+
+.input {
+  display: block;
+  width: 100%;
+  padding: 1.45rem 1rem 0.6rem;
+  border-radius: 12px;
+  border: 1px solid var(--c-border);
+  background: rgba(255, 255, 255, 0.03);
+  font-size: 1rem;
+  color: var(--c-text);
+  outline: none;
+  resize: vertical;
+  transition:
+    border-color 0.3s,
+    background-color 0.3s,
+    box-shadow 0.3s;
+
+  &:hover {
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+
+  &:focus {
+    border-color: rgba(111, 242, 212, 0.6);
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 0 0 4px rgba(111, 242, 212, 0.1);
+  }
+
+  &[aria-invalid='true'] {
+    border-color: rgba(255, 107, 139, 0.7);
+  }
+}
+
+textarea.input {
+  min-height: 150px;
+}
+
+.label {
+  position: absolute;
+  top: 1.05rem;
+  left: 1rem;
+  font-size: 1rem;
+  color: var(--c-muted);
+  pointer-events: none;
+  transform-origin: left top;
+  transition:
+    transform 0.35s $ease-out,
+    color 0.3s;
+}
+
+.input:focus + .label,
+.input:not(:placeholder-shown) + .label {
+  transform: translateY(-0.6rem) scale(0.75);
+  color: var(--c-mint);
+}
+
+.input:not(:focus):not(:placeholder-shown) + .label {
+  color: var(--c-muted);
+}
+
+.error {
+  margin-top: 0.4rem;
+  font-size: 0.8rem;
+  color: #ff8aa5;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 0.4rem;
+}
+
+.note {
+  font-size: 0.85rem;
+  color: var(--c-dim);
+}
+
+.spin {
+  animation: spin 0.9s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

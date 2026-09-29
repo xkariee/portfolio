@@ -1,0 +1,99 @@
+@use '@/styles/abstracts' as *;
+
+.section {
+  padding-block: calc(var(--section-space) * 0.5);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+
+  @include down($bp-md) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.reveal {
+  height: 100%;
+}
+
+.card {
+  @include spotlight(320px, rgba(255, 255, 255, 0.8), rgba(111, 242, 212, 0.07));
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  height: 100%;
+  padding: 1.4rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--c-border);
+  background: rgba(255, 255, 255, 0.025);
+  transition:
+    transform 0.5s $ease-out,
+    border-color 0.4s;
+
+  @include hover {
+    transform: translateY(-4px);
+    border-color: rgba(255, 255, 255, 0.18);
+
+    .icon {
+      transform: rotate(-8deg) scale(1.08);
+      color: #050507;
+      background: var(--c-mint);
+    }
+  }
+}
+
+.icon {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  margin-bottom: 0.6rem;
+  border-radius: 12px;
+  border: 1px solid var(--c-border);
+  background: rgba(255, 255, 255, 0.04);
+  font-size: 1.4rem;
+  color: var(--c-mint);
+  transition:
+    transform 0.5s $ease-back,
+    background-color 0.4s,
+    color 0.4s;
+}
+
+.number {
+  position: absolute;
+  top: 1.3rem;
+  right: 1.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--c-dim);
+}
+
+.title {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.text {
+  flex: 1;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--c-muted);
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: 0.4rem;
+
+  li {
+    padding: 0.15rem 0.55rem;
+    border-radius: 999px;
+    border: 1px solid var(--c-border);
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: var(--c-text-soft);
+  }
+}

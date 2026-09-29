@@ -1,0 +1,166 @@
+.bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  background: var(--c-bg);
+}
+
+.layer {
+  position: absolute;
+  inset: 0;
+}
+
+.swirl {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 170vmax;
+  height: 170vmax;
+  margin: -85vmax 0 0 -85vmax;
+  animation: swirl 180s linear infinite;
+}
+
+.blob {
+  --alpha: 0.3;
+
+  position: absolute;
+  width: 68vmax;
+  height: 68vmax;
+  margin: -34vmax 0 0 -34vmax;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgb(var(--tone) / var(--alpha)), transparent);
+  animation: 24s ease-in-out infinite;
+}
+
+.violet {
+  --tone: var(--aurora-violet);
+  --alpha: 0.34;
+  left: 30%;
+  top: 30%;
+  animation-name: pathA;
+  animation-duration: 23s;
+}
+
+.pink {
+  --tone: var(--aurora-pink);
+  --alpha: 0.24;
+  left: 72%;
+  top: 68%;
+  animation-name: pathB;
+  animation-duration: 27s;
+}
+
+.blue {
+  --tone: var(--aurora-blue);
+  --alpha: 0.32;
+  left: 68%;
+  top: 28%;
+  animation-name: pathC;
+  animation-duration: 21s;
+}
+
+.cyan {
+  --tone: var(--aurora-cyan);
+  --alpha: 0.2;
+  left: 28%;
+  top: 72%;
+  animation-name: pathB;
+  animation-duration: 31s;
+  animation-direction: reverse;
+}
+
+.amber {
+  --tone: var(--aurora-amber);
+  --alpha: 0.13;
+  left: 50%;
+  top: 84%;
+  animation-name: pathA;
+  animation-duration: 35s;
+  animation-direction: reverse;
+}
+
+.follow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 46vmax;
+  height: 46vmax;
+  margin: -23vmax 0 0 -23vmax;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgb(var(--aurora-violet) / 0.1), transparent);
+}
+
+.grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 72px 72px;
+  background-position: center top;
+  -webkit-mask-image: radial-gradient(ellipse 70% 55% at 50% 0%, #000 10%, transparent 75%);
+  mask-image: radial-gradient(ellipse 70% 55% at 50% 0%, #000 10%, transparent 75%);
+}
+
+.noise {
+  position: absolute;
+  inset: 0;
+  opacity: 0.08;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+@keyframes swirl {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pathA {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 1;
+  }
+  33% {
+    transform: translate3d(10vmax, 6vmax, 0) scale(1.18);
+    opacity: 0.65;
+  }
+  66% {
+    transform: translate3d(-6vmax, 10vmax, 0) scale(0.88);
+    opacity: 0.9;
+  }
+}
+
+@keyframes pathB {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1.05);
+    opacity: 0.85;
+  }
+  40% {
+    transform: translate3d(-12vmax, -7vmax, 0) scale(0.9);
+    opacity: 1;
+  }
+  70% {
+    transform: translate3d(5vmax, -12vmax, 0) scale(1.2);
+    opacity: 0.55;
+  }
+}
+
+@keyframes pathC {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(0.95);
+    opacity: 0.9;
+  }
+  30% {
+    transform: translate3d(-9vmax, 9vmax, 0) scale(1.15);
+    opacity: 0.6;
+  }
+  65% {
+    transform: translate3d(8vmax, 4vmax, 0) scale(1.05);
+    opacity: 1;
+  }
+}

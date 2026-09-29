@@ -1,0 +1,117 @@
+@use '@/styles/abstracts' as *;
+
+.cover {
+  display: block;
+  width: 100%;
+  height: 100%;
+  font-family: var(--font-sans);
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.showcase {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background:
+    radial-gradient(55% 65% at 50% 50%, color-mix(in srgb, var(--accent) 24%, transparent), transparent 72%),
+    linear-gradient(160deg, var(--from), var(--to));
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 5% 8%;
+  }
+}
+
+.shots {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4%;
+  height: 100%;
+  padding: 7% 6%;
+  transition: transform 0.9s $ease-out;
+
+  :global(.cover-host):hover & {
+    transform: translateY(-2%) scale(1.02);
+  }
+}
+
+.shot {
+  flex: 0 1 auto;
+  min-width: 0;
+  max-width: calc((100% - 4% * (var(--count) - 1)) / var(--count));
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 10px;
+  filter: drop-shadow(0 20px 28px rgba(0, 0, 0, 0.6));
+}
+
+.mono {
+  font-family: var(--font-mono);
+}
+
+.scene {
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: transform 0.9s $ease-out;
+}
+
+:global(.cover-host):hover .scene {
+  transform: translateY(-10px) scale(1.015);
+}
+
+.line {
+  stroke-dasharray: 700;
+  stroke-dashoffset: 0;
+  animation: draw 3.2s $ease-out both;
+}
+
+.route {
+  animation: march 1.4s linear infinite;
+}
+
+.caret {
+  animation: blink 1.1s steps(1) infinite;
+}
+
+.bob {
+  transform-box: fill-box;
+  animation: bob 6s ease-in-out infinite;
+}
+
+@keyframes bob {
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes draw {
+  from {
+    stroke-dashoffset: 700;
+  }
+}
+
+@keyframes march {
+  to {
+    stroke-dashoffset: -28;
+  }
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}

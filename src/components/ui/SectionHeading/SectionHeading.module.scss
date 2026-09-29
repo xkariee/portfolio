@@ -1,0 +1,52 @@
+@use '@/styles/abstracts' as *;
+
+.heading {
+  display: flex;
+  align-items: flex-end;
+  gap: 1rem;
+  margin-bottom: clamp(1.4rem, 1rem + 1.4vw, 2.2rem);
+}
+
+.title {
+  display: flex;
+  align-items: baseline;
+  gap: 0.8rem;
+  font-size: clamp(1.35rem, 1.1rem + 0.9vw, 1.75rem);
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  line-height: 1.25;
+  white-space: nowrap;
+}
+
+.index {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: var(--c-mint);
+  transform: translateY(-0.45em);
+}
+
+.mask {
+  display: inline-block;
+  overflow: hidden;
+  padding-bottom: 0.12em;
+  margin-bottom: -0.12em;
+}
+
+.text {
+  display: inline-block;
+}
+
+.rule {
+  flex: 1;
+  height: 1px;
+  margin-bottom: 0.6em;
+  background: rgba(255, 255, 255, 0.14);
+  transform-origin: left center;
+}
+
+.action {
+  flex-shrink: 0;
+  margin-bottom: 0.2em;
+}

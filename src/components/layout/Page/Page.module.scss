@@ -1,0 +1,34 @@
+.curtain {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: -14vh;
+  z-index: 950;
+  height: 128vh;
+  display: grid;
+  place-items: center;
+  border-radius: 50% 50% 50% 50% / 14vh 14vh 14vh 14vh;
+  background: #060609;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  will-change: transform;
+}
+
+.label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  padding-inline: var(--gutter);
+  font-size: clamp(2.4rem, 1rem + 6vw, 6rem);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1;
+  text-align: center;
+}
+
+.dot {
+  width: 0.18em;
+  height: 0.18em;
+  border-radius: 50%;
+  background: var(--c-mint);
+  box-shadow: 0 0 24px var(--c-mint);
+}

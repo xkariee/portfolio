@@ -1,0 +1,242 @@
+@use '@/styles/abstracts' as *;
+
+.footer {
+  @include container;
+  padding-block: clamp(3rem, 2rem + 4vw, 6rem) 2rem;
+}
+
+.card {
+  @include spotlight(460px, rgba(255, 255, 255, 0.7), rgba(111, 242, 212, 0.05));
+  display: flex;
+  justify-content: space-between;
+  gap: 2.5rem;
+  padding: clamp(1.4rem, 1rem + 1.6vw, 2.2rem);
+  border-radius: var(--radius);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  background: rgba(5, 5, 8, 0.6);
+
+  @include down($bp-sm) {
+    flex-direction: column-reverse;
+  }
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2.5rem;
+}
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  @include eyebrow;
+  color: var(--c-text-soft);
+}
+
+.dot {
+  position: relative;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--c-mint);
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    border: 1px solid var(--c-mint);
+    animation: ping 2s $ease-out infinite;
+  }
+}
+
+.bigName {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  font-size: clamp(2.6rem, 1.6rem + 3.6vw, 4.2rem);
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  color: #e9e9ee;
+  border-radius: var(--radius-xs);
+  @include focus-ring(6px);
+}
+
+.nameLine {
+  display: block;
+}
+
+.letter {
+  display: inline-block;
+  transition: color 0.4s;
+
+  .bigName:hover & {
+    animation: wave 0.7s $ease-out both;
+    animation-delay: calc(var(--i) * 35ms);
+    color: #fff;
+  }
+}
+
+.columns {
+  display: flex;
+  gap: clamp(2rem, 1rem + 4vw, 4rem);
+}
+
+.colTitle {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--c-text);
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 1rem;
+  font-weight: 300;
+  color: var(--c-muted);
+  transition: color 0.3s;
+  @include focus-ring;
+
+  &:hover {
+    color: #fff;
+  }
+}
+
+.external {
+  font-size: 0.85rem;
+  opacity: 0;
+  transform: translate(-4px, 4px);
+  transition:
+    opacity 0.3s,
+    transform 0.4s $ease-out;
+
+  .link:hover & {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.bottom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1.5rem;
+  margin-top: 1.4rem;
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: var(--c-dim);
+}
+
+.clock {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.clockDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--c-mint);
+  animation: blink 2s steps(1) infinite;
+}
+
+.motion {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 0.85rem;
+  color: var(--c-muted);
+  transition: color 0.3s;
+  @include focus-ring;
+
+  &:hover {
+    color: #fff;
+  }
+}
+
+.switch {
+  position: relative;
+  width: 30px;
+  height: 18px;
+  border-radius: 999px;
+  border: 1px solid var(--c-border);
+  background: rgba(255, 255, 255, 0.06);
+  transition:
+    background-color 0.3s,
+    border-color 0.3s;
+
+  [aria-checked='true'] > & {
+    background: rgba(111, 242, 212, 0.25);
+    border-color: rgba(111, 242, 212, 0.6);
+  }
+}
+
+.thumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--c-muted);
+  transition:
+    transform 0.35s $ease-back,
+    background-color 0.3s;
+
+  [aria-checked='true'] & {
+    transform: translateX(12px);
+    background: var(--c-mint);
+  }
+}
+
+.top {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--c-muted);
+  transition: color 0.3s;
+  @include focus-ring;
+
+  &:hover {
+    color: #fff;
+  }
+}
+
+@keyframes wave {
+  40% {
+    transform: translateY(-14%);
+  }
+}
+
+@keyframes ping {
+  from {
+    transform: scale(0.6);
+    opacity: 1;
+  }
+  to {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0.25;
+  }
+}

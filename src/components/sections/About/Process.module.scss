@@ -1,0 +1,82 @@
+@use '@/styles/abstracts' as *;
+
+.section {
+  padding-block: calc(var(--section-space) * 0.5);
+}
+
+.wrap {
+  position: relative;
+}
+
+.steps {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.5rem;
+
+  @include down($bp-md) {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem 1.25rem;
+  }
+}
+
+.rail {
+  position: absolute;
+  top: 19px;
+  left: 20px;
+  right: 20px;
+  height: 1px;
+  background: var(--c-border);
+
+  @include down($bp-md) {
+    display: none;
+  }
+}
+
+.railFill {
+  position: absolute;
+  inset: 0;
+  background: var(--c-mint);
+  box-shadow: 0 0 10px rgba(111, 242, 212, 0.5);
+  transform-origin: left center;
+}
+
+.step {
+  position: relative;
+}
+
+.bullet {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  margin-bottom: 1.1rem;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: var(--c-bg);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--c-mint);
+  transition:
+    transform 0.5s $ease-back,
+    background-color 0.3s,
+    color 0.3s;
+
+  .step:hover & {
+    transform: scale(1.12);
+    background: var(--c-mint);
+    color: #050507;
+  }
+}
+
+.title {
+  margin-bottom: 0.4rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.text {
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: var(--c-muted);
+}

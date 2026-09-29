@@ -1,0 +1,78 @@
+@use '@/styles/abstracts' as *;
+
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: grid;
+  place-items: center;
+  background: var(--c-bg);
+}
+
+.center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.9rem;
+  padding-inline: var(--gutter);
+  text-align: center;
+}
+
+.name {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-size: clamp(2.4rem, 1rem + 6vw, 5.5rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.mask {
+  display: inline-block;
+  overflow: hidden;
+  padding: 0.1em 0 0.12em;
+}
+
+.char {
+  display: inline-block;
+}
+
+.role {
+  @include eyebrow;
+}
+
+.bottom {
+  position: absolute;
+  left: var(--gutter);
+  right: var(--gutter);
+  bottom: clamp(1.25rem, 3vw, 2.25rem);
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.caption {
+  @include eyebrow;
+  color: var(--c-dim);
+}
+
+.count {
+  font-family: var(--font-mono);
+  font-size: clamp(3rem, 1.5rem + 7vw, 7.5rem);
+  font-weight: 200;
+  line-height: 0.85;
+  letter-spacing: -0.04em;
+  font-variant-numeric: tabular-nums;
+  color: var(--c-mint);
+}
+
+.bar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  transform-origin: 0 50%;
+  background: var(--c-mint);
+}

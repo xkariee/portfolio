@@ -1,0 +1,88 @@
+@use '@/styles/abstracts' as *;
+
+.section {
+  padding-top: clamp(3rem, 2rem + 3vw, 5rem);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+
+  @include down($bp-md) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2.25rem 1rem;
+  }
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  text-align: center;
+}
+
+.line {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 1px;
+  margin-bottom: 0.9rem;
+  background: rgba(255, 255, 255, 0.16);
+  transform-origin: center;
+}
+
+.spark {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 40%;
+  height: 2px;
+  border-radius: 999px;
+  background: var(--c-mint);
+  box-shadow: 0 0 12px rgba(111, 242, 212, 0.55);
+  transform: translate(-50%, -50%);
+  transition:
+    width 0.9s $ease-out-expo,
+    box-shadow 0.9s;
+}
+
+.sparkDone {
+  width: 70%;
+  box-shadow: 0 0 20px rgba(111, 242, 212, 0.8);
+}
+
+.valueWrap {
+  display: block;
+  will-change: transform, filter;
+}
+
+.value {
+  display: block;
+  font-size: clamp(2rem, 1.2rem + 2.8vw, 3.6rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  color: #fff;
+}
+
+.done {
+  animation: land 0.7s $ease-back;
+}
+
+.label {
+  max-width: 14rem;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: var(--c-muted);
+}
+
+@keyframes land {
+  40% {
+    transform: scale(1.12);
+    filter: drop-shadow(0 0 16px rgba(111, 242, 212, 0.55));
+  }
+}
